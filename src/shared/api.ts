@@ -1,32 +1,46 @@
-export type Prompt = { id: string; text: string; a: string; b: string };
+export type Role = 'crew' | 'imposter';
 
-export type HerdInit = {
+export type ClueCard = {
+  name: string; // player/bot display name
+  clue: string; // their one-word clue
+  isYou: boolean;
+};
+
+// Sent on init: your role + the board of clues (bots pre-filled, you add yours).
+export type ImposterInit = {
   type: 'init';
   postId: string;
   username: string;
-  prompt: Prompt;
-  hasVoted: boolean;
-  choice?: 'a' | 'b';
-  votesA: number;
-  votesB: number;
-  correct?: boolean;
+  category: string; // shown to everyone
+  word?: string; // shown only to CREW (undefined for imposter)
+  role: Role;
+  wordOptions: string[]; // 4 options the imposter picks from to escape
+  bots: ClueCard[]; // 4 bot crewmates' clues
+  imposterSeat: number; // index in the 5-seat lineup that is the imposter (for crew voting)
+  hasPlayed: boolean;
+  resolved?: ResolveResult;
   streak: number;
-  score: number;
+  crewWins: number;
+  imposterWins: number;
   played: number;
-  blackSheep: boolean;
+  timerSeconds: number; // live-twist countdown length
 };
 
-export type VoteResponse = {
-  type: 'vote';
-  votesA: number;
-  votesB: number;
-  choice: 'a' | 'b';
-  correct: boolean;
+export type ResolveResult = {
+  won: boolean;
+  role: Role;
+  word: string; // revealed secret word
+  imposterName: string; // who the imposter was
+  yourAccusation?: number; // seat you accused (crew)
+  yourGuess?: string; // word you guessed (imposter)
   streak: number;
-  score: number;
+  crewWins: number;
+  imposterWins: number;
   played: number;
-  blackSheep: boolean;
+  tally: number[]; // live community accusation counts per seat
 };
+
+export type ResolveResponse = { type: 'resolve' } & ResolveResult;
 
 export type SubmitPromptResponse = {
   type: 'submit';
