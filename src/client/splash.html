@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, height=device-height, user-scalable=0"
+    />
+    <title>HERD</title>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { height: 100%; }
+      body {
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        gap: 18px; height: 100%; padding: 24px; text-align: center;
+        font-family: "Trebuchet MS", system-ui, sans-serif;
+        background: radial-gradient(120% 90% at 50% 0%, #16203c 0%, #0b1020 60%);
+        color: #f5f7fa;
+      }
+      .sheep { font-size: 56px; line-height: 1; }
+      .brand { font-size: 44px; font-weight: 800; letter-spacing: 4px; }
+      .tag { font-size: 18px; color: #9aa5b1; max-width: 300px; }
+      #greet { font-size: 15px; color: #ffd166; }
+      .play {
+        margin-top: 6px; padding: 14px 34px; font-size: 18px; font-weight: 700;
+        color: #06210f; background: #57cc99; border: 0; border-radius: 12px;
+        cursor: pointer; font-family: inherit;
+      }
+      .play:active { transform: translateY(1px); }
+    </style>
+  </head>
+  <body>
+    <div class="sheep">🐑</div>
+    <div class="brand">HERD</div>
+    <div class="tag">A daily question. Guess what the crowd picks — not what you think.</div>
+    <div id="greet"></div>
+    <button class="play" id="start-button">Play today's round</button>
+    <script type="module" src="splash.ts" defer></script>
+  </body>
+</html>
