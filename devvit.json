@@ -20,8 +20,8 @@
   "menu": {
     "items": [
       {
-        "label": "Create a HERD round",
-        "description": "Post today's crowd-guessing question",
+        "label": "Create an IMPOSTER round",
+        "description": "Post a new spot-the-imposter round",
         "location": "subreddit",
         "forUserType": "moderator",
         "endpoint": "/internal/menu/post-create"

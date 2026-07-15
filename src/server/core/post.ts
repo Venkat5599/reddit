@@ -1,11 +1,11 @@
 import { reddit } from '@devvit/web/server';
-import { nextPrompt, setPostPrompt } from './herd';
+import { nextPackIdx, setPostPack } from './imposter';
 
 export const createPost = async () => {
-  const prompt = await nextPrompt();
+  const idx = await nextPackIdx();
   const post = await reddit.submitCustomPost({
-    title: `HERD — ${prompt.text}`,
+    title: `IMPOSTER — one crewmate is faking it. Can you spot them?`,
   });
-  await setPostPrompt(post.id, prompt);
+  await setPostPack(post.id, idx);
   return post;
 };

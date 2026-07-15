@@ -2,14 +2,32 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="game.css" />
-    <title>Phaser - Template</title>
+    <meta
+      name="viewport"
+      content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, height=device-height, user-scalable=0"
+    />
+    <title>IMPOSTER</title>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { height: 100%; overflow: hidden; }
+      body {
+        font-family: "Trebuchet MS", system-ui, sans-serif;
+        background: #05060c;
+        color: #f5f7fa;
+        -webkit-user-select: none; user-select: none;
+      }
+      #app { position: fixed; inset: 0; }
+      #scene { position: absolute; inset: 0; z-index: 0; }
+      #ui { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+      #labels { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+      .ui-btn { pointer-events: auto; font-family: inherit; cursor: pointer; }
+    </style>
   </head>
-
   <body>
     <div id="app">
-      <div id="game-container"></div>
+      <canvas id="scene"></canvas>
+      <div id="labels"></div>
+      <div id="ui"></div>
     </div>
     <script type="module" src="game.ts"></script>
   </body>
